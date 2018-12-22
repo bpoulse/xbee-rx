@@ -18,7 +18,7 @@ var xbee_api = require("xbee-api");
 var xbee = xbeeRx({
     serialport: "/dev/ttyUSB0",
     serialportOptions: {
-        baudrate: 57600
+        baudRate: 57600
     },
     module: "ZigBee",
     // turn on debugging to see what the library is doing
@@ -90,4 +90,3 @@ xbee
     }, function () {
         xbee.close();
     });
-

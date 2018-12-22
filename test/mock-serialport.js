@@ -28,24 +28,23 @@ var mockdata = {
     drained: false
 };
 
-function MockSerialPort(path, options) {
-    this.paused = false;
+var SerialPort = require("serialport/test");
+var MockBinding = SerialPort.Binding;
+MockBinding.createPort("/dev/TEST", { echo: false });
 
-    mockdata.path = path;
-    mockdata.options = options;
-    mockdata.opened = true;
-}
+var MockSerialPort = new SerialPort("/dev/TEST");
+MockSerialPort.paused = false;
 
-MockSerialPort.prototype.write = function (data) {
+MockSerialPort.write = function (data) {
     mockdata.lastWrite = data;
 };
 
-MockSerialPort.prototype.close = function () {
+MockSerialPort.close = function () {
     mockdata.closedBeforeDrained = !mockdata.drained;
     mockdata.closed = true;
 };
 
-MockSerialPort.prototype.drain = function (callback) {
+MockSerialPort.drain = function (callback) {
     mockdata.drained = true;
     callback();
 };

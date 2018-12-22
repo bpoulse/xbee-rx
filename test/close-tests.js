@@ -32,7 +32,7 @@ describe("xbee-rx", function () {
 
         beforeEach(function () {
             xbee = xbeeRx({
-                serialport: "serialport path",
+                serialport: "/dev/TEST",
                 module: "ZigBee"
             });
         });

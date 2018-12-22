@@ -126,7 +126,7 @@ describe("xbee-rx", function () {
 
         it("passes 'serialport' path to serialport", function () {
 
-            var serialport = "fake serialport path",
+            var serialport = "/dev/TEST",
                 xbee;
 
             xbee = xbeeRx({ serialport: serialport, module: "ZigBee" });
